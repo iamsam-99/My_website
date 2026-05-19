@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌍 Samir Basnet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+   :root {
+  --bg:        #fdf6ec;
+  --surface:   #faeedd;
+  --card:      #fff8f0;
+  --border:    #e8d5b7;
+  --accent:    #b5722a;
+  --accent2:   #c8813a;
+  --amber:     #9c5a1d;
+  --text:      #3d2b1a;
+  --muted:     #8a6a4a;
+  --heading:   #2a1a0e;
+}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── TOPO BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(74,222,128,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 60%, rgba(34,197,94,.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+    }
+    .nav-logo i { font-size: 1.1rem; color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .9rem;
+      letter-spacing: .04em;
+      font-weight: 500;
+      transition: color .25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--heading);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      width: 3rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      gap: 4rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(74,222,128,.1);
+      border: 1px solid rgba(74,222,128,.3);
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      color: var(--accent);
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 1.5rem;
+      letter-spacing: .05em;
+    }
+    .hero-badge i { font-size: .7rem; animation: pulse 2s infinite; }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--heading);
+      margin-bottom: .8rem;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      opacity: .85;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       IMPORTANT: Replace the placeholder below with your own photo.
+       Add your image file (e.g., "samir.jpg") in the same folder
+       and change src="YOUR_PHOTO.jpg" below.
+       Recommended: square or portrait image, min 400×400 px.
+    ────────────────────────────────────────────────────────── */
+    .hero-photo-wrap {
+      flex: 0 0 auto;
+      position: relative;
+    }
+    .hero-photo-frame {
+      width: 300px;
+      height: 340px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      position: relative;
+      box-shadow: 0 0 60px rgba(74,222,128,.15);
+    }
+    .hero-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      color: var(--muted);
+      gap: .5rem;
+      font-size: .85rem;
+      font-family: 'Space Mono', monospace;
+    }
+    .photo-placeholder i { font-size: 3rem; color: var(--border); }
+
+    .photo-tag {
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      background: var(--accent);
+      color: #0d1117;
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      padding: .4rem .8rem;
+      border-radius: 6px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--accent);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .75rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,222,128,.35); }
+
+    /* ─── INTERESTS CHIPS ─── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: .3rem .85rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .chip i { color: var(--accent); font-size: .72rem; }
+
+    /* ─── EDUCATION ─── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--amber));
+    }
+
+    .edu-year {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      color: var(--amber);
+      letter-spacing: .15em;
+      margin-bottom: .5rem;
+    }
+
+    .edu-level {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: .3rem;
+    }
+
+    .edu-school {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .gpa-row {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+    }
+    .gpa-val {
+      font-family: 'Space Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .gpa-label { font-size: .8rem; color: var(--muted); }
+
+    /* Subjects table inside card */
+    .subject-list {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .subject-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      color: var(--muted);
+      padding: .3rem 0;
+      border-bottom: 1px solid rgba(48,54,61,.6);
+    }
+    .subject-row span:last-child {
+      font-family: 'Space Mono', monospace;
+      color: var(--text);
+    }
+
+    /* ─── RESUME ─── */
+    .resume-note {
+      background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.25);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      font-size: .85rem;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .resume-note i { font-size: 1rem; flex-shrink: 0; }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .resume-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--heading);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .resume-col h3 i { color: var(--accent); font-size: 1rem; }
+
+    .resume-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1rem;
+      position: relative;
+      border-left: 3px solid var(--accent);
+    }
+
+    .resume-item-title {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--heading);
+      margin-bottom: .2rem;
+    }
+    .resume-item-sub {
+      font-size: .8rem;
+      color: var(--accent);
+      font-family: 'Space Mono', monospace;
+      margin-bottom: .6rem;
+    }
+    .resume-item-desc {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
+    .skill-tag {
+      background: rgba(74,222,128,.1);
+      border: 1px solid rgba(74,222,128,.25);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: .25rem .65rem;
+      font-size: .75rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ─── PORTFOLIO ─── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .project-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #1a2744, #0f2d1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(74,222,128,.08), transparent 60%);
+    }
+    .project-thumb i { position: relative; z-index: 1; color: rgba(74,222,128,.4); }
+
+    .project-body { padding: 1.4rem; }
+    .project-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .5rem;
+    }
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: .5rem;
+    }
+    .project-desc {
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .project-links {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1.2rem;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .78rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'Space Mono', monospace;
+      border: 1px solid rgba(74,222,128,.3);
+      padding: .3rem .75rem;
+      border-radius: 6px;
+      transition: background .2s;
+    }
+    .project-link:hover { background: rgba(74,222,128,.1); }
+
+    /* ─── CONTACT ─── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--heading);
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      margin-bottom: 1rem;
+      font-size: .9rem;
+      color: var(--text);
+    }
+    .contact-item i {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--accent);
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+    .contact-item a { color: var(--text); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent); }
+
+    .social-row {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+    .social-btn {
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color .25s, border-color .25s, transform .2s;
+    }
+    .social-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+    /* ─── CONTACT FORM ─── */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--heading);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: .05em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .25s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(74,222,128,.1);
+    }
+    .form-group textarea { min-height: 120px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: .85rem;
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: transform .2s, box-shadow .2s;
+      margin-top: .5rem;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,222,128,.35); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--accent);
+      font-size: .95rem;
+    }
+    .form-success i { font-size: 2rem; display: block; margin-bottom: .5rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .82rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s, transform .7s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); padding: 1.5rem; gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      section { padding: 5rem 1.5rem; }
+      #home { flex-direction: column-reverse; text-align: center; gap: 2rem; padding-top: 6rem; }
+      .hero-photo-wrap { display: flex; justify-content: center; }
+      .chips { justify-content: center; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .resume-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: .5rem; text-align: center; padding: 1.5rem; }
+      .hero-photo-frame { width: 220px; height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <i class="fas fa-earth-asia"></i> Samir Basnet
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME ══════════════ -->
+<section id="home">
+  <div class="hero-text">
+    <div class="hero-badge">
+      <i class="fas fa-circle"></i> Open to Opportunities
+    </div>
+    <h1 class="hero-name">Samir<br/><span>Basnet</span></h1>
+    <p class="hero-tagline">Geospatial Enthusiast · Mapping the World, One Layer at a Time</p>
+
+    <div class="chips">
+      <span class="chip"><i class="fas fa-map"></i> GIS &amp; Remote Sensing</span>
+      <span class="chip"><i class="fas fa-satellite"></i> Satellite Imagery</span>
+      <span class="chip"><i class="fas fa-mountain"></i> Nepal &amp; Himalayas</span>
+      <span class="chip"><i class="fas fa-code"></i> Spatial Analysis</span>
+    </div>
+
+    <!-- ──────────────────────────────────────────────────────────
+         ABOUT ME — Replace the placeholder text below with your
+         own personal description. Tell visitors who you are,
+         what drives your passion for geospatial work, and what
+         you hope to achieve. Keep it 3-5 sentences.
+    ────────────────────────────────────────────────────────── -->
+    <p class="hero-desc">
+      I am a geospatial enthusiast based in Nepal, passionate about harnessing
+      the power of maps, satellite imagery, and spatial data to understand our
+      ever-changing Earth. My journey began with a deep curiosity about how
+      landscapes form and how human activity shapes them — from the glaciers of
+      the Himalayas to the urban sprawl of Kathmandu Valley.
+      <!-- ↑ Replace this text with your own description ↑ -->
+    </p>
+
+    <a href="#contact" class="hero-cta">
+      <i class="fas fa-paper-plane"></i> Get In Touch
+    </a>
+  </div>
+
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame">
+      <!--
+        ══ YOUR PHOTO GOES HERE ══
+        Replace the div.photo-placeholder below with:
+        <img src="YOUR_PHOTO_FILENAME.jpg" alt="Samir Basnet"/>
+
+        Example:
+        <img src="samir.jpg" alt="Samir Basnet"/>
+
+        Place your photo file in the SAME folder as this index.html.
+        Recommended size: at least 400×450 px (portrait orientation).
+      -->
+      <div class="photo-placeholder">
+        <i class="fas fa-user-circle"></i>
+        <span>Add Your Photo</span>
+        <span style="font-size:.7rem;opacity:.6">see comment in code</span>
+      </div>
+    </div>
+    <div class="photo-tag">📍 Kathmandu, NP</div>
+  </div>
+</section>
+
+<!-- ══════════════ EDUCATION ══════════════ -->
+<section id="education" class="reveal">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="divider"></div>
+
+  <div class="edu-grid">
+
+    <!-- SEE CARD -->
+    <div class="edu-card">
+      <!--
+        ══ SEE RESULTS ══
+        Fill in:
+          • edu-year    → Year of your SEE exam (e.g. 2022)
+          • edu-school  → Name of your school
+          • gpa-val     → Your GPA (e.g. 3.95) or total percentage
+          • subject-row → Add/remove rows for each subject and grade
+      -->
+      <div class="edu-year"><!-- SEE Year → --> 20XX</div>
+      <div class="edu-level">SEE (Grade X)</div>
+      <div class="edu-school"><!-- School Name → --> Your Secondary School, Kathmandu</div>
+
+      <div class="gpa-row">
+        <span class="gpa-val"><!-- GPA → -->0.00</span>
+        <span class="gpa-label">GPA / 4.0</span>
+      </div>
+
+      <!-- Add your SEE subjects and grades below -->
+      <div class="subject-list">
+        <div class="subject-row"><span>Compulsory Mathematics</span><span>A+</span></div>
+        <div class="subject-row"><span>Science &amp; Technology</span><span>A+</span></div>
+        <div class="subject-row"><span>Compulsory English</span><span>A+</span></div>
+        <div class="subject-row"><span>Social Studies</span><span>A</span></div>
+        <div class="subject-row"><span>Compulsory Nepali</span><span>A</span></div>
+        <!-- Add or remove rows as needed -->
+      </div>
+    </div>
+
+    <!-- +2 CARD -->
+    <div class="edu-card">
+      <!--
+        ══ +2 RESULTS ══
+        Fill in:
+          • edu-year    → Year of your +2 / NEB exam (e.g. 2024)
+          • edu-school  → Name of your college
+          • edu-school second line → Stream (Science / Management etc.)
+          • gpa-val     → Your GPA or percentage
+          • subject-row → Your +2 subjects and grades
+      -->
+      <div class="edu-year"><!-- +2 Year → --> 20XX</div>
+      <div class="edu-level">+2 (Grade XI–XII)</div>
+      <div class="edu-school"><!-- College Name → --> Your Higher Secondary College &nbsp;|&nbsp; <!-- Stream → --> Science</div>
+
+      <div class="gpa-row">
+        <span class="gpa-val"><!-- GPA → -->0.00</span>
+        <span class="gpa-label">GPA / 4.0</span>
+      </div>
+
+      <!-- Add your +2 subjects and grades below -->
+      <div class="subject-list">
+        <div class="subject-row"><span>Mathematics</span><span>A+</span></div>
+        <div class="subject-row"><span>Physics</span><span>A</span></div>
+        <div class="subject-row"><span>Chemistry</span><span>A</span></div>
+        <div class="subject-row"><span>Biology / Computer</span><span>A+</span></div>
+        <div class="subject-row"><span>English</span><span>A</span></div>
+        <!-- Add or remove rows as needed -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ RESUME ══════════════ -->
+<section id="resume" class="reveal">
+  <p class="section-label">Curriculum Vitae</p>
+  <h2 class="section-title">Resume</h2>
+  <div class="divider"></div>
+
+  <div class="resume-note">
+    <i class="fas fa-circle-info"></i>
+    All items marked with "← ADD" are placeholders — replace them with your own data in the HTML source code.
+  </div>
+
+  <div class="resume-grid">
+
+    <!-- LEFT COL -->
+    <div class="resume-col">
+      <h3><i class="fas fa-briefcase"></i> Experience</h3>
+
+      <!--
+        ══ EXPERIENCE ITEM ══
+        Duplicate this block for each job / internship / volunteer role.
+        Fill in: Job Title, Organisation, Date Range, and a short description.
+      -->
+      <div class="resume-item">
+        <div class="resume-item-title"><!-- Job Title → --> Geospatial Intern / Volunteer</div>
+        <div class="resume-item-sub"><!-- Organisation → --> Organisation Name &nbsp;·&nbsp; <!-- Dates → --> Jan 20XX – Present</div>
+        <div class="resume-item-desc">
+          <!-- Describe your role in 2-3 sentences → -->
+          Worked on land-use mapping, digitising features in QGIS, and
+          preparing thematic maps for project reports. Assisted senior
+          analysts with data collection and field surveys.
+        </div>
+      </div>
+
+      <!-- Add more experience blocks here -->
+      <!-- <div class="resume-item"> ... </div> -->
+
+      <h3 style="margin-top:2rem"><i class="fas fa-certificate"></i> Certifications</h3>
+
+      <!--
+        ══ CERTIFICATION ITEM ══
+        Duplicate for each certificate / course completed.
+      -->
+      <div class="resume-item">
+        <div class="resume-item-title"><!-- Certificate Name → --> GIS Certificate</div>
+        <div class="resume-item-sub"><!-- Issuing Body → --> Issuing Organisation &nbsp;·&nbsp; <!-- Year → --> 20XX</div>
+        <div class="resume-item-desc"><!-- Brief note about what you learned → --> Short description of the course and skills gained.</div>
+      </div>
+
+      <!-- Add more certification blocks here -->
+    </div>
+
+    <!-- RIGHT COL -->
+    <div class="resume-col">
+      <h3><i class="fas fa-gears"></i> Skills</h3>
+
+      <!--
+        ══ SKILLS ══
+        Add or remove skill tags below to match your actual skill set.
+      -->
+      <div class="resume-item">
+        <div class="resume-item-title">GIS &amp; Remote Sensing</div>
+        <div class="skill-tags">
+          <span class="skill-tag">QGIS</span>
+          <span class="skill-tag">ArcGIS</span>
+          <span class="skill-tag">Google Earth Engine</span>
+          <span class="skill-tag">ENVI</span>
+          <!-- Add more → <span class="skill-tag">Tool Name</span> -->
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="resume-item-title">Programming &amp; Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">GeoPandas</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <!-- Add more → <span class="skill-tag">Language</span> -->
+        </div>
+      </div>
+
+      <div class="resume-item">
+        <div class="resume-item-title">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Field Survey</span>
+          <span class="skill-tag">Report Writing</span>
+          <span class="skill-tag">Team Collaboration</span>
+          <!-- Add more soft skills as needed -->
+        </div>
+      </div>
+
+      <h3 style="margin-top:2rem"><i class="fas fa-trophy"></i> Achievements</h3>
+
+      <!--
+        ══ ACHIEVEMENT ITEM ══
+        Add any awards, hackathon wins, scholarships, etc.
+      -->
+      <div class="resume-item">
+        <div class="resume-item-title"><!-- Achievement Title → --> Achievement / Award Name</div>
+        <div class="resume-item-sub"><!-- Organisation → --> Organiser &nbsp;·&nbsp; <!-- Year → --> 20XX</div>
+        <div class="resume-item-desc"><!-- Describe the achievement → --> Brief description of what you achieved and why it matters.</div>
+      </div>
+
+      <!-- Add more achievement blocks here -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PORTFOLIO ══════════════ -->
+<section id="portfolio" class="reveal">
+  <p class="section-label">My Works</p>
+  <h2 class="section-title">Portfolio</h2>
+  <div class="divider"></div>
+
+  <div class="portfolio-grid">
+
+    <!--
+      ══ PROJECT CARD ══
+      Duplicate this block for each project.
+      Fill in:
+        • project-tag   → Category (GIS Project, Remote Sensing, Web Map, etc.)
+        • project-title → Project name
+        • project-desc  → 2-3 sentence description
+        • fa-icon       → Change the Font Awesome icon class to match the project
+        • project-link  → Replace # with your GitHub repo or live demo URL
+    -->
+    <div class="project-card">
+      <div class="project-thumb"><i class="fas fa-map-location-dot"></i></div>
+      <div class="project-body">
+        <div class="project-tag"><!-- Category → --> GIS Project</div>
+        <div class="project-title"><!-- Project Title → --> Land Use Land Cover Mapping</div>
+        <div class="project-desc">
+          <!-- Description → -->
+          Classified land cover types of the Kathmandu Valley using
+          Landsat 8 imagery and supervised classification in QGIS.
+          Produced thematic maps for change-detection analysis.
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#" class="project-link"><i class="fas fa-arrow-up-right-from-square"></i> Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><i class="fas fa-satellite-dish"></i></div>
+      <div class="project-body">
+        <div class="project-tag"><!-- Category → --> Remote Sensing</div>
+        <div class="project-title"><!-- Project Title → --> Glacier Retreat Analysis</div>
+        <div class="project-desc">
+          <!-- Description → -->
+          Used multi-temporal satellite data to track glacier extent
+          change in the Langtang region over a 20-year period.
+          Findings highlighted accelerating retreat linked to warming trends.
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#" class="project-link"><i class="fas fa-arrow-up-right-from-square"></i> Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><i class="fas fa-layer-group"></i></div>
+      <div class="project-body">
+        <div class="project-tag"><!-- Category → --> Web Mapping</div>
+        <div class="project-title"><!-- Project Title → --> Interactive Web Map</div>
+        <div class="project-desc">
+          <!-- Description → -->
+          Built an interactive Leaflet.js web map showcasing
+          heritage sites in Nepal, with pop-up descriptions and
+          category-based filtering.
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#" class="project-link"><i class="fas fa-arrow-up-right-from-square"></i> Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more project cards here by duplicating the block above -->
+
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="reveal">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="divider"></div>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Let's connect &amp; collaborate</h3>
+      <p>
+        Whether you have a project idea, a question about geospatial
+        work, or just want to say hi — my inbox is always open.
+        I'll get back to you as soon as possible.
+      </p>
+
+      <!--
+        ══ CONTACT DETAILS ══
+        Replace the placeholder values below with your actual info.
+      -->
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <!-- Replace with your email address -->
+        <a href="mailto:yourname@email.com">yourname@email.com</a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-location-dot"></i>
+        <span>Kathmandu, Nepal</span>
+      </div>
+
+      <!--
+        ══ SOCIAL MEDIA ══
+        Replace each href="#" with your actual profile URL.
+        Remove any icons for platforms you don't use.
+        You can add more by copying a .social-btn block.
+      -->
+      <div class="social-row">
+        <!-- GitHub — replace # with your GitHub profile URL -->
+        <a href="#" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+
+        <!-- LinkedIn — replace # with your LinkedIn URL -->
+        <a href="#" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+        <!-- Twitter / X — replace # with your Twitter URL; remove if unused -->
+        <a href="#" target="_blank" class="social-btn" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+
+        <!-- Facebook — replace # with your Facebook URL; remove if unused -->
+        <a href="#" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Instagram — replace # with your Instagram URL; remove if unused -->
+        <a href="#" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+
+        <!-- ResearchGate — useful for academic profiles; remove if unused -->
+        <a href="#" target="_blank" class="social-btn" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+      </div>
+    </div>
+
+    <!-- QUERY FORM -->
+    <div class="contact-form">
+      <h3>📬 Send Me a Message</h3>
+
+      <!--
+        ══ CONTACT FORM ══
+        This form uses mailto: to open the user's email client.
+        Replace "yourname@email.com" in the JS below with your actual email.
+        For a backend-powered form, swap the JS handler with your preferred service
+        (e.g., Formspree, EmailJS, or your own API endpoint).
+      -->
+      <div id="formSuccess" class="form-success">
+        <i class="fas fa-circle-check"></i>
+        Message sent! I'll get back to you soon.
+      </div>
+
+      <div id="queryForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="senderName" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label>Your Email</label>
+            <input type="email" id="senderEmail" placeholder="email@example.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="msgSubject" placeholder="What is this about?" />
+        </div>
+        <div class="form-group">
+          <label>Your Message / Query</label>
+          <textarea id="msgBody" placeholder="Write your message or query here…"></textarea>
+        </div>
+        <button class="btn-submit" onclick="sendMail()">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <span>© <span id="yr"></span> Samir Basnet · All rights reserved.</span>
+  <span style="display:flex;align-items:center;gap:.4rem;">
+    Built with <i class="fas fa-heart" style="color:var(--accent)"></i> in Kathmandu, Nepal
+  </span>
+</footer>
+
+<!-- ══════════════ JS ══════════════ -->
+<script>
+  /* Year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* Mobile menu */
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  /* Close menu on link click */
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  /* Scroll reveal */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Contact form — mailto handler
+     ══ REPLACE the email address below with your actual email ══  */
+  function sendMail() {
+    const name    = document.getElementById('senderName').value.trim();
+    const email   = document.getElementById('senderEmail').value.trim();
+    const subject = document.getElementById('msgSubject').value.trim();
+    const body    = document.getElementById('msgBody').value.trim();
+
+    if (!name || !email || !body) {
+      alert('Please fill in Name, Email, and Message before sending.');
+      return;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       Replace "yourname@email.com" below with your real email.
+    ────────────────────────────────────────────────────────── */
+    const to = 'yourname@email.com';
+
+    const mailtoLink =
+      `mailto:${to}` +
+      `?subject=${encodeURIComponent(subject || 'Portfolio Query from ' + name)}` +
+      `&body=${encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + body)}`;
+
+    window.location.href = mailtoLink;
+
+    /* Show success message */
+    document.getElementById('queryForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+
+    /* Reset after 4 seconds */
+    setTimeout(() => {
+      document.getElementById('queryForm').style.display = 'block';
+      document.getElementById('formSuccess').style.display = 'none';
+      document.getElementById('senderName').value = '';
+      document.getElementById('senderEmail').value = '';
+      document.getElementById('msgSubject').value = '';
+      document.getElementById('msgBody').value = '';
+    }, 4000);
+  }
+</script>
+</body>
+</html>
