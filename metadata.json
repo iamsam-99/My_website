@@ -1,6 +1,0 @@
-{
-  "name": "Samir Basnet Portfolio",
-  "description": "Professional engineering portfolio and interactive WebGIS dashboard of Samir Basnet, a Geomatics Engineering student at Kathmandu University.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
