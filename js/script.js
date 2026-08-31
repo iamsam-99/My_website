@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Parcel Conflict Detection System",
       duration: "February 2026 – March 2026",
       organization: "Kathmandu University (KU)",
-      description: "The system designed to identify the conflicts in land parcel boudnaries using JAVA.",
+      description: "The system was designed to identify the conflicts in land parcel boudnaries using JAVA.",
       tools: "Ms.Excel, VsCode",
       //link: "",
       image: "img/parcel conflict.png"
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Digital Cadastre, DGPS, UAV survey",
       duration: "July 2026 – August 2026",
       organization: "Kathmandu University (KU)",
-      description: "A 8th semester survey field where we survey the same area with traditional techniques ranging from plane table, digital cadastre and moving to the UAV survey.",
+      description: "A 8th semester survey field where we surveyed the same area with traditional techniques ranging from plane table, digital cadastre and moving to the UAV survey.",
       tools: "Ms Excel, Plane Table, Total Station, Digital Level, DGPS, UAV",
       //link: "",
       image: "img/dgps.jpeg"

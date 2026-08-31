@@ -19,7 +19,7 @@ This project is **open-source** and available under the MIT License.
 
 ## Contact
 
-**Kushal KC**
+**Samir Basnet**
 
 * Email: [sameerbasnet37@gmail.com](mailto:sameerbasnet37@gmail.com)
 * Website: [https://www.basnetsamir.com.np](https://www.basnetsamir.com.np)
